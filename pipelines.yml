@@ -32,36 +32,36 @@ resources:
       
 
 pipelines:
-  - name: npm_test
-    type: Bash
-    configuration:
-      affinityGroup: dbp_group
-    execution:
-      onStart:
-        - cd node-red
-        - ls -la
-        - npm install
-        - npm test
-      onComplete:
-        - ls -la
-        - save_tests test-results.xml
-
-  - name: npm_build
-    type: Bash
-    configuration:
-      affinityGroup: dbp_group
-      inputSteps:
-        - name: npm_test
-    execution:
-      onStart:
-        - ls -la
-        - npm run build
-      onComplete:
-        - ls -la
-        - save_tests test-results.xml
-
   - name: pipeline_dbp
     steps:
+      - name: npm_test
+        type: Bash
+        configuration:
+          affinityGroup: dbp_group
+        execution:
+          onStart:
+            - cd node-red
+            - ls -la
+            - npm install
+            - npm test
+          onComplete:
+            - ls -la
+            - save_tests test-results.xml
+
+      - name: npm_build
+        type: Bash
+        configuration:
+          affinityGroup: dbp_group
+          inputSteps:
+            - name: npm_test
+        execution:
+          onStart:
+            - ls -la
+            - npm run build
+          onComplete:
+            - ls -la
+            - save_tests test-results.xml
+
       - name: docker_build
         type: DockerBuild
         configuration:

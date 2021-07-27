@@ -8,3 +8,4 @@ Learn GitHub Actions through a fun little game.
   - AWS_SECRET_KEY
 
 test push
+test push

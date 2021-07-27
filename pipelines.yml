@@ -44,8 +44,8 @@ pipelines:
           onStart:
             - ls -la
             - pwd
-            - find . 
-            - cd workspace
+            - env
+            - ./dependencyState/resources/dbp_repo2
             - ls -la
             - npm install
             - npm test

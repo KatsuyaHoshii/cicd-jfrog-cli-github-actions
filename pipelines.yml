@@ -38,6 +38,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: dbp_group
+          inputResources:
+            - name: dbp_repo2
         execution:
           onStart:
             - ls -la
@@ -53,6 +55,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: dbp_group
+          inputResources:
+            - name: dbp_repo2
           inputSteps:
             - name: npm_test
         execution:

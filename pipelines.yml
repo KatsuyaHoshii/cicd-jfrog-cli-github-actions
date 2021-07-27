@@ -63,11 +63,11 @@ pipelines:
             - name: npm_test
         execution:
           onStart:
+            - cd $res_dbp_repo2_resourcePath
             - ls -la
             - npm run build
           onComplete:
             - ls -la
-            - save_tests test-results.xml
 
       - name: docker_build
         type: DockerBuild

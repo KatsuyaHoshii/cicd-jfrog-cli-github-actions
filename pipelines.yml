@@ -40,7 +40,8 @@ pipelines:
           affinityGroup: dbp_group
         execution:
           onStart:
-            - cd node-red
+            - ls -la
+            - cd cicd-jfrog-cli-github-actions
             - ls -la
             - npm install
             - npm test

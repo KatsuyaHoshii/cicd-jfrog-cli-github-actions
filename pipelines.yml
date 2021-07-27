@@ -43,6 +43,8 @@ pipelines:
         execution:
           onStart:
             - ls -la
+            - pwd
+            - find . 
             - cd workspace
             - ls -la
             - npm install

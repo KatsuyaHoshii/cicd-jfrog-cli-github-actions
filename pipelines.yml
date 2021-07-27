@@ -46,6 +46,20 @@ pipelines:
         - ls -la
         - save_tests test-results.xml
 
+  - name: npm_build
+    type: Bash
+    configuration:
+      affinityGroup: dbp_group
+      inputSteps:
+        - name: npm_test
+    execution:
+      onStart:
+        - ls -la
+        - npm run build
+      onComplete:
+        - ls -la
+        - save_tests test-results.xml
+
   - name: pipeline_dbp
     steps:
       - name: docker_build
@@ -57,7 +71,7 @@ pipelines:
           dockerImageName: trialhisol202107.jfrog.io/docker-local/jfrog-pipelines-docker-sample  # replace with your image path and name
           dockerImageTag: ${run_number}
           inputSteps:
-            - name: npm_test
+            - name: npm_build
           inputResources:
             - name: dbp_repo
           integrations:

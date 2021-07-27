@@ -1,5 +1,5 @@
 resources:
-  - name: dbp_repo
+  - name: dbp_repo2
     type: GitRepo
     configuration:
       gitProvider: my_github                       # <-- replace with your integration
@@ -7,7 +7,7 @@ resources:
       branches:
         include: master
 
-  - name: dbp_image
+  - name: dbp_image2
     type: Image
     configuration:
       registry: art                                # <-- replace with your artifactory integration
@@ -16,18 +16,18 @@ resources:
       imageTag: latest
       autoPull: true
       
-  - name: dbp_build_info
+  - name: dbp_build_info2
     type: BuildInfo
     configuration:
       sourceArtifactory: art
-      buildName: dbp_build
+      buildName: dbp_build2
       buildNumber: 1    
 
-  - name: dbp_promoted_build_info
+  - name: dbp_promoted_build_info2
     type: BuildInfo
     configuration:
       sourceArtifactory: art
-      buildName: dbp_build
+      buildName: dbp_build2
       buildNumber: 1
       
 
@@ -73,7 +73,7 @@ pipelines:
           inputSteps:
             - name: npm_build
           inputResources:
-            - name: dbp_repo
+            - name: dbp_repo2
           integrations:
             - name: art                            # <-- replace with your artifactory integration
 
@@ -87,7 +87,7 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: dbp_image
+            - name: dbp_image2
 
       - name: publish_dbp_build
         type: PublishBuildInfo
@@ -95,7 +95,7 @@ pipelines:
           inputSteps:
             - name: docker_push
           outputResources:
-            - name: dbp_build_info
+            - name: dbp_build_info2
 
       - name: promote_dbp_build
         type: PromoteBuild
@@ -104,6 +104,6 @@ pipelines:
           integrations:
             - name: art
           inputResources:
-            - name: dbp_build_info
+            - name: dbp_build_info2
           outputResources:
-            - name: dbp_promoted_build_info
+            - name: dbp_promoted_build_info2

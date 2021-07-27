@@ -45,7 +45,7 @@ pipelines:
             - ls -la
             - pwd
             - env
-            - cd ./dependencyState/resources/dbp_repo2
+            - cd $res_dbp_repo2_resourcePath
             - ls -la
             - npm install
             - npm test

@@ -43,7 +43,7 @@ pipelines:
         execution:
           onStart:
             - ls -la
-            - cd cicd-jfrog-cli-github-actions
+            - cd workspace
             - ls -la
             - npm install
             - npm test

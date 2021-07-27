@@ -32,7 +32,7 @@ resources:
       
 
 pipelines:
-  - name: pipeline_dbp
+  - name: pipeline_dbp2
     steps:
       - name: npm_test
         type: Bash

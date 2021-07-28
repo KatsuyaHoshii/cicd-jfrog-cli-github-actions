@@ -56,6 +56,8 @@ pipelines:
         type: Bash
         configuration:
           affinityGroup: dbp_group
+          integrations:
+            - name: art
           inputResources:
             - name: dbp_repo2
           inputSteps:

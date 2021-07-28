@@ -68,6 +68,7 @@ pipelines:
             - npm run build
           onComplete:
             - ls -la
+            - find .
 
       - name: docker_build
         type: DockerBuild
@@ -88,7 +89,7 @@ pipelines:
             - pwd
             - ls -a
             - env
-            - find /
+            - find .
 
       - name: docker_push
         type: DockerPush

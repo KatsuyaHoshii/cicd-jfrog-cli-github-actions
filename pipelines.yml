@@ -69,7 +69,7 @@ pipelines:
             - npm run build
           onComplete:
             - ls -la
-            - add_cache_files public dist
+            - add_cache_files $res_dbp_repo2_resourcePath/public dist
 
       - name: docker_build
         type: DockerBuild
@@ -89,7 +89,7 @@ pipelines:
           onStart:
             - pwd
             - ls -a
-            - restore_cache_files dist .
+            - restore_cache_files dist $res_dbp_repo2_resourcePath/public
             - find .
 
       - name: docker_push

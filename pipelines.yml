@@ -69,7 +69,7 @@ pipelines:
             - npm run build
           onComplete:
             - ls -la
-            - add_cache_files $res_dbp_repo2_resourcePath/public dist
+            - jfrog rt u "public/" generic-local/public
 
       - name: docker_build
         type: DockerBuild
@@ -89,7 +89,7 @@ pipelines:
           onStart:
             - pwd
             - ls -a
-            - restore_cache_files dist $res_dbp_repo2_resourcePath/public
+            - jfrog rt dl generic-local/public public/
             - find .
 
       - name: docker_push

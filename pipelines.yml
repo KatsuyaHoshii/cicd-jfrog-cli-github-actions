@@ -30,7 +30,6 @@ resources:
       buildName: dbp_build2
       buildNumber: 1
       
-
 pipelines:
   - name: pipeline_dbp2
     steps:
@@ -70,7 +69,7 @@ pipelines:
             - npm run build
           onComplete:
             - ls -la
-            - find .
+            - add_cache_files public dist
 
       - name: docker_build
         type: DockerBuild
@@ -90,7 +89,7 @@ pipelines:
           onStart:
             - pwd
             - ls -a
-            - env
+            - restore_cache_files dist .
             - find .
 
       - name: docker_push

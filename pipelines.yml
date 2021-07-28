@@ -83,6 +83,12 @@ pipelines:
             - name: dbp_repo2
           integrations:
             - name: art                            # <-- replace with your artifactory integration
+        execution:
+          onStart:
+            - pwd
+            - ls -a
+            - env
+            - find /
 
       - name: docker_push
         type: DockerPush

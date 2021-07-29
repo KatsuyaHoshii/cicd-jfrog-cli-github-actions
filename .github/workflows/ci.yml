@@ -8,14 +8,14 @@ on:
 jobs:
   build:
     name: Build Node.js app and Upload it to Artifactory
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
 
       - name: Setup jfrog cli
-        uses: jfrog/setup-jfrog-cli@v1.0.5
+        uses: jfrog/setup-jfrog-cli@v1
         env:
           JF_ARTIFACTORY_1: ${{ secrets.JF_ARTIFACTORY_SECRET_1 }}
               

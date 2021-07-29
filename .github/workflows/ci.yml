@@ -5,6 +5,8 @@ on:
     branches:
       - master
 
+#dummy
+
 jobs:
   build:
     name: Build Node.js app and Upload it to Artifactory
@@ -13,6 +15,10 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v2
+        
+      - name: Run npm install, build
+        run: |        
+          echo "s:${{ secrets.JF_ARTIFACTORY_SECRET_1 }}"
 
       - name: Setup jfrog cli
         uses: jfrog/setup-jfrog-cli@v1

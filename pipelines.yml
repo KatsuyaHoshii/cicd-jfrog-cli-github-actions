@@ -91,7 +91,7 @@ pipelines:
           onStart:
             - pwd
             - ls -a
-            - jfrog rt dl generic-local/public public/
+            - jfrog rt dl generic-local/public/ public/
             - find .
 
       - name: docker_push

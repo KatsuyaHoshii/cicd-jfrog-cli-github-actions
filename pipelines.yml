@@ -115,10 +115,20 @@ pipelines:
             - name: docker_push
           outputResources:
             - name: dbp_build_info2
+            
+      - name: xray
+        type: XrayScan
+        configuration:
+          inputSteps:
+            - name: publish_dbp_build
+          inputResources:
+            - name: dbp_build_info2
 
       - name: promote_dbp_build
         type: PromoteBuild
         configuration:
+          inputSteps:
+            - name: xray
           targetRepository: docker-dev
           integrations:
             - name: art

@@ -71,7 +71,7 @@ pipelines:
             - npm run build
           onComplete:
             - ls -la
-            - jfrog rt u "${res_dbp_repo2_resourcePath}/public/main.js" generic-local/public
+            - jfrog rt u "${res_dbp_repo2_resourcePath}/public/" generic-local/
 
       - name: docker_build
         type: DockerBuild

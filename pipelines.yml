@@ -72,7 +72,7 @@ pipelines:
           onComplete:
             - ls -la
             - cd $res_dbp_repo2_resourcePath
-            - jfrog rt u public/ generic-local/
+            - jfrog rt u public/ generic-local/public/
 
       - name: docker_build
         type: DockerBuild

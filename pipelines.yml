@@ -71,7 +71,8 @@ pipelines:
             - npm run build
           onComplete:
             - ls -la
-            - jfrog rt u "${res_dbp_repo2_resourcePath}/public/" generic-local/
+            - cd $res_dbp_repo2_resourcePath
+            - jfrog rt u public/ generic-local/
 
       - name: docker_build
         type: DockerBuild
@@ -91,7 +92,8 @@ pipelines:
           onStart:
             - pwd
             - ls -a
-            - jfrog rt dl "generic-local/public/*" "${res_dbp_repo2_resourcePath}/public/"
+            - cd $res_dbp_repo2_resourcePath
+            - jfrog rt dl generic-local/public/ .
             - find .
 
       - name: docker_push

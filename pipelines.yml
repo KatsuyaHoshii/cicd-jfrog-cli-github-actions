@@ -116,7 +116,7 @@ pipelines:
           outputResources:
             - name: dbp_build_info2
             
-      #aaaaabbbb
+      #aaaaabbbbccc
       - name: xray
         type: XrayScan
         configuration:

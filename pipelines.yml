@@ -116,10 +116,10 @@ pipelines:
           outputResources:
             - name: dbp_build_info2
             
-      #aaaaabbbbccc
       - name: xray
         type: XrayScan
         configuration:
+          failOnScan: true
           inputSteps:
             - name: publish_dbp_build
           inputResources:

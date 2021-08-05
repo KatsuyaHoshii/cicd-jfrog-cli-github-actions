@@ -1,4 +1,3 @@
 FROM nginx:1.21.1
-#FROM busybox:latest
-FROM alpine:latest
+#FROM alpine:latest
 COPY public/. /usr/share/nginx/html/.

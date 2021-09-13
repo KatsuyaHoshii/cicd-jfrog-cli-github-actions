@@ -23,7 +23,7 @@ jobs:
               
       - name: Run npm install, build
         run: |        
-          jfrog rt npmci ga-npm
+          jfrog rt npmi ga-npm
           npm run build
           jfrog rt u "public/" ga-generic/public/          
       - name: Run npm publish, build publish, build scan
